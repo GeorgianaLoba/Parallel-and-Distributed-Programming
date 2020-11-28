@@ -1,0 +1,13 @@
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\bin\Debug\netcoreapp3.1\laboratory4.exe
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\bin\Debug\netcoreapp3.1\laboratory4.deps.json
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\bin\Debug\netcoreapp3.1\laboratory4.runtimeconfig.json
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\bin\Debug\netcoreapp3.1\laboratory4.runtimeconfig.dev.json
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\bin\Debug\netcoreapp3.1\laboratory4.dll
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\bin\Debug\netcoreapp3.1\laboratory4.pdb
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.csprojAssemblyReference.cache
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.csproj.CoreCompileInputs.cache
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.AssemblyInfoInputs.cache
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.AssemblyInfo.cs
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.dll
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.pdb
+C:\Users\Geo\Desktop\uni-sem2\PDP good file\Parallel-and-Distributed-Programming\laboratory4\laboratory4\obj\Debug\netcoreapp3.1\laboratory4.genruntimeconfig.cache
