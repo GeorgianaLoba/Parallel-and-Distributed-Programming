@@ -1,10 +1,13 @@
 # Parallel-and-Distributed-Programming
 
-<ul>
-    <li>Lab 1 - "Non-cooperative" multithreading</li>
-    <li>Lab 2 - Producer-consumer synchronization </li>
-    <li>Lab 3 - Simple parallel tasks </li>
-</ul>
+  [Lab 1 - "Non-cooperative" multithreading](#first-lab) </br>
+  [Lab 2 - Producer-consumer synchronization](#second-lab)  </br>
+  [Lab 3 - Simple parallel tasks](#third-lab) </br>
+  [Lab 4 - Futures and continuations](#fourth-lab) </br>
+  [Lab 5 - Parallelizing techniques](#fifth-lab) </br>
+
+
+### First Lab
 
 <b> Laboratory 1 requirements: </b>
 
@@ -22,6 +25,7 @@ We have concurrently run transfer operations, to be executer on multiple threads
 
 From time to time, as well as at the end of the program, a consistency check shall be executed. It shall verify that the amount of money in each account corresponds with the operations records associated to that account, and also that all operations on each account appear also in the logs of the source or destination of the transfer.
 
+### Second Lab
 
 <b> Laboratory 2 requirements: </b>
 
@@ -31,6 +35,7 @@ Requirement: Compute the scalar product of two vectors.
 
 Create two threads. The first thread (producer) will compute the products of pairs of elements - one from each vector - and will feed the second thread. The second thread (consumer) will sum up the products computed by the first one. The two threads will behind synchronized with a condition variable and a mutex. The consumer will be cleared to use each product as soon as it is computed by the producer thread.
 
+### Third Lab
 
 <b>Laboratory 3 requirements:</b>
 
@@ -52,3 +57,36 @@ For running the tasks, also implement 2 approaches:
    Create an actual thread for each task (use the low-level thread mechanism from the programming language)
    
    Use a thread pool.
+
+
+### Fourth Lab
+
+<b> Laboratory 4 requirements: </b>
+
+The goal of this lab is to use C# TPL futures and continuations in a more complex scenario, in conjunction with waiting for external events.
+
+Write a program that is capable of simultaneously downloading several files through HTTP. Use directly the BeginConnect()/EndConnect(), BeginSend()/EndSend() and BeginReceive()/EndReceive() Socket functions, and write a simple parser for the HTTP protocol (it should be able only to get the header lines and to understand the Content-lenght: header line).
+
+Try three implementations:
+
+ <ul>
+ <li>Directly implement the parser on the callbacks (event-driven); </li>
+ <li>Wrap the connect/send/receive operations in tasks, with the callback setting the result of the task; </li>
+ <li>Like the previous, but also use the async/await mechanism. </li> </ul>
+ 
+ ### Fifth Lab
+
+ <b> Laboratory 5 requirements: </b>
+ 
+ <i> TODO </i>
+ 
+The goal of this lab is to implement a simple but non-trivial parallel algorithm.
+
+Perform the multiplication of 2 polynomials. Use both the regular O(n2) algorithm and the Karatsuba algorithm, and each in both the sequencial form and a parallelized form. Compare the 4 variants.
+
+The documentation will describe:
+<ul> 
+    <li>the algorithms </li>
+    <li>the synchronization used in the parallelized variants</li>
+    <li>the performance measurements </li>
+</ul>
