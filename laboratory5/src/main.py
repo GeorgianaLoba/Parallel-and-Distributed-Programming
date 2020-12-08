@@ -1,18 +1,13 @@
-# A[] represents coefficients of first polynomial
-# B[] represents coefficients of second polynomial
-# m and n are sizes of A[] and B[] respectively
-import concurrent
 import multiprocessing as mp
-from asyncio import sleep
-from concurrent.futures._base import wait, ALL_COMPLETED
+import time
 from concurrent.futures.thread import ThreadPoolExecutor
-from multiprocessing.pool import ThreadPool
+import random
 from threading import Thread
 from typing import List
 
 
 class Polynomial:
-    def __init__(self, n: int, coefficients: List[int]):
+    def __init__(self, n: int, coefficients: List):
         self.n = n
         self.coefficients = coefficients
 
@@ -163,25 +158,49 @@ class PolynomialOperations:
             thread.join()
         return Polynomial(size, product)
 
+def generate_large_poly_coefficients():
+    poly = []
+    for _ in range(5000):
+        poly.append(random.randint(100000, 1000000))
+    return poly
 
 def main():
-    A = [5, 0, -10, 6]
-    B = [-1, 2, 4]
+    A = [5, 0, -10, 6, 8, -3, 15, 22]
+    #A = generate_large_poly_coefficients()
+    #B = generate_large_poly_coefficients()
+    B = [-1, 2, 4, 1, -4, 0, 0, 0, -3, 4, 5]
     m = len(A)
     n = len(B)
     polyA = Polynomial(m, A)
     print(polyA)
     polyB = Polynomial(n, B)
     print(polyB)
+
+    #non-parallel versions
+
+    start1 = time.time()
     polyProduct = PolynomialOperations.multiplySequencially(polyA, polyB)
-    print(polyProduct)
-    #polyProductKamasutra = PolynomialOperations.multiplyKamasutra(polyA, polyB)
-    #print(polyProductKamasutra)
-    # polyProductParallel = PolynomialOperations.multiplySequenciallyParallel(polyA, polyB)
-    # print(polyProductParallel)
-    #print(PolynomialOperations.shift(polyA, 2))
+    print("Sequencial multiplication: " + str(polyProduct))
+    end1 = time.time()
+    print("Elapsed time: " + str(end1 - start1))
+
+    start2 = time.time()
+    polyProductKaratsuba = PolynomialOperations.multiplyKamasutra(polyA, polyB)
+    print("Karatsuba multiplication: " + str(polyProductKaratsuba))
+    end2 = time.time()
+    print("Elapsed time: " + str(end2 - start2))
+
+    start3 = time.time()
+    polyProductParallel = PolynomialOperations.multiplySequenciallyParallel(polyA, polyB)
+    print("Parallel - Sequencial multiplication: " + str(polyProductParallel))
+    end3 = time.time()
+    print("Elapsed time: " + str(end3 - start3))
+
+    start4 = time.time()
     polyProduct2 = PolynomialOperations.multiplyKaratsubaParallel([1, polyA, polyB])
-    print(polyProduct2)
+    print("Parallel - Karatsuba multiplication: " + str(polyProduct2))
+    end4 = time.time()
+    print("Elapsed time: " + str(end4 - start4))
 
 if __name__ == '__main__':
     main()
