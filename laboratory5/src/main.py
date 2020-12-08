@@ -1,7 +1,12 @@
 # A[] represents coefficients of first polynomial
 # B[] represents coefficients of second polynomial
 # m and n are sizes of A[] and B[] respectively
+import concurrent
 import multiprocessing as mp
+from asyncio import sleep
+from concurrent.futures._base import wait, ALL_COMPLETED
+from concurrent.futures.thread import ThreadPoolExecutor
+from multiprocessing.pool import ThreadPool
 from threading import Thread
 from typing import List
 
@@ -71,7 +76,6 @@ class PolynomialOperations:
             coeff.append(A.coefficients[i])
         return Polynomial(A.n+by, coeff)
 
-
     @staticmethod
     def multiplySequencially(A: Polynomial, B: Polynomial) -> Polynomial:
         size = A.n + B.n - 1
@@ -98,6 +102,35 @@ class PolynomialOperations:
         r1 = PolynomialOperations.shift(result3, 2*m)
         r2 = PolynomialOperations.shift(PolynomialOperations.subtract(PolynomialOperations.subtract(result2, result3), result1), m)
         return PolynomialOperations.add(PolynomialOperations.add(r1, r2), result1)
+
+    @staticmethod
+    def multiplyKaratsubaParallel(args) -> Polynomial:
+        depth = args[0]
+        A = args[1]
+        B = args[2]
+        if depth > 4:
+            return PolynomialOperations.multiplySequencially(A, B)
+        if A.n < 2 or B.n < 2:
+            return PolynomialOperations.multiplySequencially(A, B)
+
+        m = int(max(A.n, B.n) / 2)
+        lowA = Polynomial(len(A.coefficients[:m]), A.coefficients[:m])
+        highA = Polynomial(len(A.coefficients[m:]), A.coefficients[m:])
+        lowB = Polynomial(len(B.coefficients[:m]), B.coefficients[:m])
+        highB = Polynomial(len(B.coefficients[m:]), B.coefficients[m:])
+        karaPool = ThreadPoolExecutor(mp.cpu_count())
+        futureResult1 = karaPool.submit(PolynomialOperations.multiplyKaratsubaParallel, ([depth+1, lowA, lowB]))
+        futureResult2 = karaPool.submit(PolynomialOperations.multiplyKaratsubaParallel, ([depth+1, PolynomialOperations.add(lowA, highA), PolynomialOperations.add(lowB, highB)]))
+        futureResult3 = karaPool.submit(PolynomialOperations.multiplyKaratsubaParallel, ([depth+1, highA, highB]))
+        karaPool.shutdown(wait=True)
+        result1 = futureResult1.result()
+        result2 = futureResult2.result()
+        result3 = futureResult3.result()
+        r1 = PolynomialOperations.shift(result3, 2 * m)
+        r2 = PolynomialOperations.shift(
+            PolynomialOperations.subtract(PolynomialOperations.subtract(result2, result3), result1), m)
+        return PolynomialOperations.add(PolynomialOperations.add(r1, r2), result1)
+
 
     @staticmethod
     def do_multiplication(A: Polynomial, B: Polynomial, product: List[int], start: int, end: int) -> None:
@@ -132,8 +165,8 @@ class PolynomialOperations:
 
 
 def main():
-    A = [5, 0, 10, 6]
-    B = [1, 2, 4]
+    A = [5, 0, -10, 6]
+    B = [-1, 2, 4]
     m = len(A)
     n = len(B)
     polyA = Polynomial(m, A)
@@ -142,11 +175,13 @@ def main():
     print(polyB)
     polyProduct = PolynomialOperations.multiplySequencially(polyA, polyB)
     print(polyProduct)
-    polyProductKamasutra = PolynomialOperations.multiplyKamasutra(polyA, polyB)
-    print(polyProductKamasutra)
+    #polyProductKamasutra = PolynomialOperations.multiplyKamasutra(polyA, polyB)
+    #print(polyProductKamasutra)
     # polyProductParallel = PolynomialOperations.multiplySequenciallyParallel(polyA, polyB)
     # print(polyProductParallel)
     #print(PolynomialOperations.shift(polyA, 2))
+    polyProduct2 = PolynomialOperations.multiplyKaratsubaParallel([1, polyA, polyB])
+    print(polyProduct2)
 
 if __name__ == '__main__':
     main()
