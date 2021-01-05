@@ -1,0 +1,15 @@
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\mpiFIRST.exe
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.csprojAssemblyReference.cache
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.AssemblyInfoInputs.cache
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.AssemblyInfo.cs
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\mpiFIRST.deps.json
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\mpiFIRST.runtimeconfig.json
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\mpiFIRST.runtimeconfig.dev.json
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\mpiFIRST.dll
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\mpiFIRST.pdb
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\bin\Debug\netcoreapp3.1\MPI.dll
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.csproj.CoreCompileInputs.cache
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.csproj.CopyComplete
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.dll
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.pdb
+C:\Program Files\Microsoft MPI\mpiFIRST\mpiFIRST\obj\Debug\netcoreapp3.1\mpiFIRST.genruntimeconfig.cache
