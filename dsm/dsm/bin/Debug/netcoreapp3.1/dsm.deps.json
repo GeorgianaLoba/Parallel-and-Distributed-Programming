@@ -1,0 +1,45 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "dsm/1.0.0": {
+        "dependencies": {
+          "MPI.NET": "1.2.0"
+        },
+        "runtime": {
+          "dsm.dll": {}
+        }
+      },
+      "MPI.NET/1.2.0": {
+        "runtime": {
+          "lib/net40/MPI.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          },
+          "lib/net40/MPIUtils.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dsm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MPI.NET/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qwmzBndEh2EtfguSwklC1o6OdQs2ngJFIUhEijU22Eo8uNhhD++ekCiI77qUDMvshIdbIxpToYu0OGBo8Gj9+Q==",
+      "path": "mpi.net/1.2.0",
+      "hashPath": "mpi.net.1.2.0.nupkg.sha512"
+    }
+  }
+}
