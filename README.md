@@ -5,6 +5,9 @@
   [Lab 3 - Simple parallel tasks](#third-lab) </br>
   [Lab 4 - Futures and continuations](#fourth-lab) </br>
   [Lab 5 - Parallelizing techniques](#fifth-lab) </br>
+  [Lab 6 - Parallelizing techniques (2 - parallel explore)](#sixth-lab) </br>
+  [Lab 7 - MPI programming](#seventh-lab) </br>
+  [Lab 8 - Distributed protocols](#eighth-lab)</br>
 
 
 ### First Lab
@@ -88,3 +91,53 @@ The documentation will describe:
     <li>the synchronization used in the parallelized variants</li>
     <li>the performance measurements </li>
 </ul>
+
+
+### Sixth Lab 
+
+<b> Laboratory 6 requirements: </b>
+
+The goal of this lab is to implement a simple but non-trivial parallel algorithm.
+
+Given a directed graph, find a Hamiltonean cycle, if one exists. Use multiple threads to parallelize the search.
+
+The documentation will describe:
+<ul> 
+  <li>the algorithms</li>
+  <li>the synchronization used in the parallelized variants </li>
+  <li>the performance measurements </li>
+</ul>
+
+### Seventh Lab
+
+<b> Laboratory 7 requirements: </b>
+
+The goal of this lab is to implement a distributed algorithm using MPI.
+
+Perform the multiplication of 2 polynomials, by distributing computation across several nodes using MPI. Use both the regular O(n2) algorithm and the Karatsuba algorithm. Compare the performance with the "regular" CPU implementation from lab 5.
+
+The documentation will describe:
+<ul> 
+  <li>the algorithms</li>
+  <li>the distribution and communication </li>
+  <li>the performance measurements </li>
+</ul>
+
+### Eighth Lab
+
+<b> Laboratory 8 requirements: </b>
+
+The goal of this lab is to deal with the consistency issues of the distributed programming.
+
+Implement a simple distributed shared memory (DSM) mechanism. The lab shall have a main program and a DSM library. There shall be a predefined number of communicating processes. The DSM mechanism shall provide a predefined number of integer variables residing on each of the processes. The DSM shall provide the following operations:
+
+    write a value to a variable (local or residing in another process);
+    a callback informing the main program that a variable managed by the DSM has changed. All processes shall receive the same sequence of data change callbacks; it is not allowed that process P sees first a change on a variable A and then a change on a variable B, while another process Q sees the change on B first and the change on A second.
+    a "compare and exchange" operation, that compares a variable with a given value and, if equal, it sets the variable to another given value. Be careful at the interaction with the previous requirement. 
+
+Notes:
+
+    Only nodes that subscribe to a variable will receive notifications about changes of that variable, and only those nodes are allowed to change (set) that variable;
+    The subscriptions are static and each node knows, for each variable it is subscribed to, which are the other subscribers for that variable.
+    We assume that most variables are accessed locally (within a small group of a few computers); we don't want a centralized server that hold all variables, because it would be a central bottleneck of the system. Therefore, as a result of changing a variable, all the messages should be exchanged only between the subscribers of that variable.
+    The computers are not faulty. 
